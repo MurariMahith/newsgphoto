@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg"> 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/users.css' %}"> 
+
+</head>
+<body>
+    <div style="padding-left: 100px;padding-top: 100px;position: absolute;left: 15%;">
+    {% if num_users %}
+    <h1>No Users to display</h1>
+    {%  else %}
+    <table>
+        <tr>
+            <th>User name</th>
+            <th>User First Name</th>
+            <th>User Last Name</th>
+            <th>User E-mail Id</th>
+        </tr>
+        {% for u in users %}
+        {% if not u.is_superuser %}
+        <tr>
+            <td>{{ u.username }}</td>
+            <td>{{ u.first_name }}</td>
+            <td>{{ u.last_name }}</td>
+            <td>{{ u.email }}</td>
+        </tr>
+
+        <!-- <p style="width: auto;text-align: center;">You have {{num_orders_user}} orders to view</p>    -->    
+        {% endif %}
+        {% endfor %}
+    </table>
+    {% endif %}
+    </div>
+    <button id="btn1" class="btnclass" onclick="window.location.href='/'">Home</button><br><br>
+    <button id="btn2" class="btnclass" onclick="window.location.href='/myorders'">View Orders</button><br><br>
+    <button id="btn2" class="btnclass" onclick="window.location.href='/acc/logout'">Logout</button><br><br>
+    <button id="btn2" class="btnclass" onclick="window.location.href='/works'">Our works</button><br><br>
+    <button id="btn2" class="btnclass" onclick="window.location.href='/gallery'">Gallery</button><br><br>
+    <button class="btnclass" onclick="window.location.href='/search'">Search</button><br><br>
+    <button class="btnclass" onclick="window.location.href='/news_feed'">News Feed</button>
+</body>
+</html>

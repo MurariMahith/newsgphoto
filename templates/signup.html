@@ -1,0 +1,45 @@
+{% load static %}
+<html>
+<head>
+<title>Sign Up</title>
+<link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg">
+<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}"> 
+</head>
+
+<body>
+  <div class='maindiv'>
+    <h1 class="maincaption"><a href='/' id='h1sg'> Sg Photography </a></h1>
+    <button class="hbtn" onclick="window.location.href='/'">Home</button>
+    <button class="hbtn" onclick="window.location.href='/works'">Our Works</button>
+    <button class="hbtn" onclick="window.location.href='/gallery'">Gallery</button>
+    <button class="hbtn" onclick="window.location.href='/search'">Search</button>
+    {% if user.is_authenticated %}
+    <script>alert('You are already logged')</script>
+    <button class="hbtn" onclick="window.location.href='/acc/logout'">Logout</button>
+    {% endif %}
+  </div>
+
+<div class='maindiv'>
+<h3>Sign Up into SG Photography</h3>
+<form action="signup" method="post">
+  {% csrf_token %}
+<input type="text" name="first_name" placeholder="First Name" required><br> 
+<input type="text" name="last_name" placeholder="Last Name" required><br>
+<input type="text" name="username" placeholder="Username" required><br>
+<input type="text" name="mobile_number" placeholder="Mobile number" required><br>
+<input type="email" name="email" placeholder="Email Id" required><br>
+<input type="password" name="password1" placeholder="Password" required><br>
+<input type="password" name="password2" placeholder="Retype Password" required><br><br>
+
+<input type="submit"><br><br>
+<p>Note: please remember your first name and last name inorder to retrive password if forgotten</p>
+<a href="/acc/login">Already have account? </a>
+
+</form>
+{% for i in messages %}
+<input type="hidden" value='{{i}}' id='x'>
+<script>alert(document.getElementById('x').value)</script>
+{% endfor %}
+</div> 
+</body>
+</html>

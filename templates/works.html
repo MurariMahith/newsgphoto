@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg"> 
+    <title>Works of Sg Photography</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/works.css' %}">
+</head>
+<body>
+    <header>
+        <h1 class="maincaption"><a href='/' style="color: black;text-decoration: none;border-radius: 40px;"> Sg Photography </a></h1>
+        <button class="hbtn" onclick="window.location.href='/'">Home</button>
+        <button class="hbtn" onclick="window.location.href='/next'">Order</button>
+        {% if user.is_authenticated %}
+        <button class="hbtn" onclick="window.location.href='/acc/logout'">Logout</button>
+        {% else %}
+        <button class="hbtn" onclick="window.location.href='/acc/signup'">Signup</button>
+        <button class="hbtn" onclick="window.location.href='/acc/login'">Login</button>
+        {% endif %}
+        <button class="hbtn" onclick="window.location.href='/gallery'">Gallery</button>
+        <button class="hbtn" onclick="window.location.href='/search'">Search</button>
+        <button class="hbtn" onclick="window.location.href='/news_feed'">News Feed</button>
+    </header>
+    <div style="padding: 40px;">
+        <h1>Our range of Collections:</h1>
+        <div class="row">
+            {% for collect in collects %}
+            <div class="column">
+                <img src="{{ collect.img.url }}" class="image">
+                <h4 class="caption">{{collect.name}}</h4>
+                <p class="caption">{{collect.caption}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+        <h1>Our Range of Works:</h1>
+        <div class="row">
+            {% for working in workings %}
+            <div class="column">
+                <img src="{{ working.img.url }}" class="image">
+                <h4 class="caption">{{ working.name }}</h4>
+                <p class="caption">{{working.caption}}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <footer>
+        <p style="width: auto;text-align: center;">Copyright &copy;<script>document.write(new Date().getFullYear());</script> | This website is designed and maintained by RogueRobot for queries please mail us at <a href="mailto:murarimahith21@gmail.com" style="color: black;">'rrwebdev'</a></p>
+    </footer>
+</body>
+</html>
+<script src="{% static 'jquery.js' %}" type="text/javascript"></script>

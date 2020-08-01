@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/gallery.css' %}"> 
+
+</head>
+<body>
+    <header>
+        <h1 class="maincaption"><a href='/' id='h1sg'> Sg Photography </a></h1>
+        {% if user.is_authenticated %}
+        <button class="hbtn" onclick="window.location.href='/'">Home</button>
+        <button class="hbtn" onclick="window.location.href='/next'">Order</button>
+        <button class="hbtn" onclick="window.location.href='/acc/logout'">Logout</button>
+        <button class="hbtn" onclick="window.location.href='/works'">Our Works</button>
+        <button class="hbtn" onclick="window.location.href='/search'">Search</button>
+        {% else %}
+        <button class="hbtn" onclick="window.location.href='/'">Home</button>
+        <button class="hbtn" onclick="window.location.href='/next'">Order</button>
+        <button class="hbtn" onclick="window.location.href='/acc/signup'">Signup</button>
+        <button class="hbtn" onclick="window.location.href='/acc/login'">Login</button>
+        <button class="hbtn" onclick="window.location.href='/works'">Our Works</button>
+        <button class="hbtn" onclick="window.location.href='/search'">Search</button>
+        <button class="hbtn" onclick="window.location.href='/news_feed'">News Feed</button>
+        {% endif %}
+    </header>
+    <h1 id='gallery'>"Our Gallery"</h1>    
+    <div id="row" >
+        {% for i in images %}
+        <div class="column" id='gal_img'>
+            <img src="{{ i.img.url }}" width="200" height="400" class="image">
+        </div>
+        {% endfor %}
+   </div>
+</body>
+</html>

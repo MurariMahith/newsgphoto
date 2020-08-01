@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/next.css' %}"> 
+    <title>Sg Photography</title>
+</head>
+<body>
+
+    <div id='maindiv'>
+    <h3> please <a href="https://instagram.com/sg_clicknblink?igshid=18q0voqnyd6ig">click here</a> 
+        to visit us on instagram and text us, we will contact you soon</h3>
+        <h3 style="width: auto;text-align: center;">or create account by clicking <a href="/acc/signup">here</a></h3>
+    </div>
+    <div id='footdiv'>
+        <h1 class="maincaption">Sg Photography</h1>
+    <button class="hbtn" onclick="window.location.href='/'">Home</button>
+        <button class="hbtn" onclick="window.location.href='next'">Order</button>
+        <button class="hbtn" onclick="window.location.href='/acc/signup'">Signup</button>
+        <button class="hbtn" onclick="window.location.href='/acc/login'">Login</button>
+        <button class="hbtn" onclick="window.location.href='works'">Our Works</button>
+    </div>
+</body>
+</html>

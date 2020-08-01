@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<head>
+<title>Order</title>
+<link rel = "icon" href =  "{% static 'icons/sg.jpg' %}" type = "image/jpg">
+<link rel="stylesheet" type="text/css" href="{% static 'css/buy.css' %}">  
+
+
+</head>
+
+<body>
+<div id='maindiv'>
+<h3>Give your order details:</h3>
+<form action="buy" method="post">
+{% csrf_token %}
+<input type="text" name="buyername" placeholder="Order Name" required><br><br>
+
+<textarea name="description" placeholder="Specify your order" required></textarea><br><br>
+
+<input type="text" name="phone_number" placeholder="Mobile number" required><br><br>
+
+<input type="submit"><br><br>
+
+</form>
+Go to our <a href="/works">Works</a><br>
+Go to <a href="/">home</a>
+</div>
+
+</body>
+</html>
